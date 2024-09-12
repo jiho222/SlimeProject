@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Area
   - Map
+  - Monster
   layers:
   - Default
   - TransparentFX
