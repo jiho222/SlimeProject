@@ -4,30 +4,14 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public float scrollSpeed = 8f;
-
     void Update()
     {
-        if (GameManager.instance != null && !GameManager.instance.isAttack)
+        // GameManager의 isAttack 값을 체크해서 스크롤링 여부를 결정
+        if (!GameManager.instance.isAttack)
         {
+            float scrollSpeed = GameManager.instance.GetScrollSpeed();
             // y축으로 일정 속도로 내려감
             transform.Translate(Vector3.down * scrollSpeed * Time.deltaTime);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            // 스크롤 상태는 GameManager가 관리하므로 여기서는 필요 없음
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            // 스크롤 상태는 GameManager가 관리하므로 여기서는 필요 없음
-        }
+        }  
     }
 }

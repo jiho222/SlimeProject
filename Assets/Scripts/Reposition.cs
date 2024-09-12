@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class Reposition : MonoBehaviour
 {
-    public float scrollSpeed = 10f;
-
     void Update()
     {
-        // GameManager에서 플레이어의 공격 상태를 가져온다.
-        bool playerIsAttack = GameManager.instance.player.isAttack;
-
-        // 플레이어가 공격 중이 아니면 스크롤링을 한다.
-        if (!playerIsAttack)
+        // GameManager의 isAttack 값을 체크해서 스크롤링 여부를 결정
+        if (!GameManager.instance.isAttack)
         {
+            float scrollSpeed = GameManager.instance.GetScrollSpeed();
             // y축으로 일정 속도로 내려감
             transform.Translate(Vector3.down * scrollSpeed * Time.deltaTime);
-        }
+        }  
     }
 
     void OnTriggerExit2D(Collider2D collision)
