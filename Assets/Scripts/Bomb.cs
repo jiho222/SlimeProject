@@ -32,6 +32,7 @@ public class Bomb : MonoBehaviour
         // 체력이 0 이하가 되면 폭발
         if (health <= 0)
         {
+            
             StartCoroutine(Explode());
         }
 
@@ -42,6 +43,8 @@ public class Bomb : MonoBehaviour
             {
                 // 몬스터의 체력을 감소
                 health -= damageToBomb;
+                // 폭탄 소리 재생
+                AudioManager.instance.PlaySfx("BombSound");
             }
         }
     }
@@ -70,9 +73,9 @@ public class Bomb : MonoBehaviour
             bombCollider.enabled = false;
         }
 
-        // BombFlame을 자식 객체에서 활성화
         if (bombFlame != null)
         {
+            // BombFlame을 자식 객체에서 활성화
             bombFlame.SetActive(true);
 
             // 1초 대기
@@ -85,4 +88,6 @@ public class Bomb : MonoBehaviour
         // 폭탄 비활성화
         gameObject.SetActive(false);
     }
+
+
 }
