@@ -2034,10 +2034,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmClip: {fileID: 8300000, guid: d92d3e75fb6594ba0995503c0f3c0f81, type: 3}
-  bgmVolume: 0.1
+  bgmVolume: 0.5
   swordSound: {fileID: 8300000, guid: f8eff057db5824a5186cc6d2070a0e64, type: 3}
   bombSound: {fileID: 8300000, guid: e5effb654500842acb356e0c397d09dd, type: 3}
-  sfxVolume: 0.2
+  sfxVolume: 0.8
 --- !u!4 &1692939974
 Transform:
   m_ObjectHideFlags: 0
