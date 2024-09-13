@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public Vector2 inputVec;
     public float speed;
     public bool isAttack = false;
+    public bool isDie = false; // 사망 여부
 
     Rigidbody2D rigid;
     Animator anim;
@@ -20,6 +21,10 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        // 사망 시에는 움직이지 않음
+        if (isDie)
+            return;
+
         // 이동할 벡터 계산
         Vector2 nextVec = new Vector2(inputVec.x, 0) * speed * Time.fixedDeltaTime;
 
@@ -31,6 +36,15 @@ public class Player : MonoBehaviour
 
         // 제한된 목표 위치로 캐릭터 이동
         rigid.MovePosition(targetPosition);
+    }
+
+    void Update()
+    {
+        // 체력이 0이 되었을 때 사망 처리
+        if (GameManager.instance.playerHealth <= 0 && !isDie)
+        {
+            Die(); // 사망 처리
+        }
     }
 
     void OnMove(InputValue value)
@@ -59,5 +73,12 @@ public class Player : MonoBehaviour
             GameManager.instance.SetAttackState(false); // 공격 상태를 GameManager에 전달
             anim.SetBool("isAttack", false);
         }
+    }
+
+    public void Die()
+    {
+        isDie = true;
+        anim.SetTrigger("isDie"); // 사망 애니메이션 실행
+        GameManager.instance.isLive = false; // 게임 종료
     }
 }

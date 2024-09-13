@@ -2293,6 +2293,7 @@ MonoBehaviour:
   inputVec: {x: 0, y: 0}
   speed: 10
   isAttack: 0
+  isDie: 0
 --- !u!114 &1751626667
 MonoBehaviour:
   m_ObjectHideFlags: 0
