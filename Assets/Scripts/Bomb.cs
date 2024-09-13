@@ -10,10 +10,13 @@ public class Bomb : MonoBehaviour
     public GameObject bombFlame; // 폭탄 폭발 시 활성화할 BombFlame Prefab
 
     private bool isDamagingPlayer = false; // 플레이어와의 충돌 여부
+    private Collider2D bombCollider;
 
     void OnEnable()
     {
         health = maxHealth;
+        bombCollider = GetComponent<Collider2D>();
+        bombCollider.enabled = true;
     }
 
     void Update()
@@ -61,6 +64,12 @@ public class Bomb : MonoBehaviour
 
     private IEnumerator Explode()
     {
+        // 폭탄의 콜라이더 비활성화
+        if (bombCollider != null)
+        {
+            bombCollider.enabled = false;
+        }
+
         // BombFlame을 자식 객체에서 활성화
         if (bombFlame != null)
         {
