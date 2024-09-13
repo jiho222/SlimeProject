@@ -243,8 +243,8 @@ ScriptedImporter:
     uvTransform: {x: 119, y: 4}
   - name: UI_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: -0.33333334}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -263,8 +263,8 @@ ScriptedImporter:
     uvTransform: {x: 75, y: 4}
   - name: UI_Frame_7
     originalName: 
-    pivot: {x: 0.43478262, y: 0}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2

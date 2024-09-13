@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int maxHealth = 300;
     public int gem;
     [Header("# GameObject")]
-    // public PoolManager pool;
+    public PoolManager pool;
     public Player player;
     // public LevelUp uiLevelUp;
     // public Result uiResult;
