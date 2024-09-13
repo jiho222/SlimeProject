@@ -31,7 +31,7 @@ public class HUD : MonoBehaviour
                 break;
 
             case InfoType.Gem:
-                myText.text = GameManager.instance.gem.ToString();
+                myText.text = string.Format("{0}", GameManager.instance.gem);
                 break;
             case InfoType.DistanceSlider:
                 float curDistance = GameManager.instance.gameDistance;
