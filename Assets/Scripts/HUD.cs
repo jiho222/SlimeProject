@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Health, Gem, Distance }
+    public enum InfoType { Health, Gem, DistanceSlider, DistnaceText }
     public InfoType infoType;
 
     Text myText;
@@ -31,11 +31,13 @@ public class HUD : MonoBehaviour
             case InfoType.Gem:
                 myText.text = GameManager.instance.gem.ToString();
                 break;
-            case InfoType.Distance:
-                // myText.text = GameManager.instance.gameDistance.ToString("F0");
+            case InfoType.DistanceSlider:
                 float curDistance = GameManager.instance.gameDistance;
                 float maxDistance = GameManager.instance.maxGameDistance;
                 mySlider.value = curDistance / maxDistance;
+                break;
+            case InfoType.DistnaceText:
+                myText.text = string.Format("{0:F0}m", GameManager.instance.gameDistance);
                 break;
         }
     }
