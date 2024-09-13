@@ -8,6 +8,7 @@ TagManager:
   - Map
   - Monster
   - Trigger
+  - Spin
   layers:
   - Default
   - TransparentFX

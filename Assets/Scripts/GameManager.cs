@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,11 +20,14 @@ public class GameManager : MonoBehaviour
     public PoolManager pool;
     public Player player;
 
+    public int gem; // gem 값 추가
+
     void Awake()
     {
         instance = this;
         Application.targetFrameRate = 60;
         playerHealth = maxPlayerHealth; // 게임 시작 시 플레이어 체력을 최대 체력으로 설정
+        gem = 0; // gem 초기화
     }
 
     void Update()
@@ -71,5 +75,10 @@ public class GameManager : MonoBehaviour
                 isLive = false; // 체력이 0 이하가 되면 게임 종료
             }
         }
+    }
+
+    public void IncreaseGem(int amount)
+    {
+        gem += amount;
     }
 }

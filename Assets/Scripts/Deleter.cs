@@ -13,6 +13,13 @@ public class Deleter : MonoBehaviour
         {
             if (collision.CompareTag(tag))
             {
+                // 몬스터의 경우 Deleter로 비활성화되었음을 알림
+                Monster monster = collision.GetComponent<Monster>();
+                if (monster != null)
+                {
+                    monster.SetDeactivatedByDeleter(true);
+                }
+
                 collision.gameObject.SetActive(false);
                 break;
             }

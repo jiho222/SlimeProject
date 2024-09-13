@@ -9,11 +9,13 @@ public class Monster : MonoBehaviour
     public int damageToMonster; // 몬스터가 받는 데미지
 
     private bool isDamagingPlayer = false; // 플레이어와 접촉 중인지 여부
+    private bool isDeactivatedByDeleter = false; // Deleter로 인해 비활성화되었는지 여부
 
     void OnEnable()
     {
         // 몬스터가 활성화될 때마다 체력을 최대 체력으로 초기화
         health = maxHealth;
+        isDeactivatedByDeleter = false; // 초기화
     }
 
     void Update()
@@ -60,5 +62,19 @@ public class Monster : MonoBehaviour
         {
             isDamagingPlayer = false;
         }
+    }
+
+    void OnDisable()
+    {
+        if (!isDeactivatedByDeleter)
+        {
+            // 몬스터가 Deleter로 인해 비활성화되지 않았을 때만 gem 증가
+            GameManager.instance.IncreaseGem(1);
+        }
+    }
+
+    public void SetDeactivatedByDeleter(bool value)
+    {
+        isDeactivatedByDeleter = value;
     }
 }
