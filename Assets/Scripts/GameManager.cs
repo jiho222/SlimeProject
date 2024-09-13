@@ -61,11 +61,11 @@ public class GameManager : MonoBehaviour
         return scrollSpeed;
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageToPlayer)
     {
         if (isLive)
         {
-            playerHealth -= damageAmount;
+            playerHealth -= damageToPlayer;
             if (playerHealth <= 0)
             {
                 isLive = false; // 체력이 0 이하가 되면 게임 종료

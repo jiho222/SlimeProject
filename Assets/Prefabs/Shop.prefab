@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6071103039113825280}
   - component: {fileID: 6320918332218190382}
-  - component: {fileID: 3327244924482889076}
   - component: {fileID: -6291747533532656126}
   - component: {fileID: -7751173492238795562}
+  - component: {fileID: 2333983559642393052}
   m_Layer: 0
   m_Name: Shop
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,21 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3327244924482889076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6285097052511079948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04939a0b3428446faab7232bfe91c7fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 10
-  damageAmount: 0
 --- !u!50 &-6291747533532656126
 Rigidbody2D:
   serializedVersion: 4
@@ -174,3 +159,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2.25}
   m_EdgeRadius: 0
+--- !u!114 &2333983559642393052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285097052511079948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb9789ffea6b484c9e734f27dfa3138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

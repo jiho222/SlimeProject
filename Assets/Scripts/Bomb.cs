@@ -1,18 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
     public int health;
     public int maxHealth;
-    public int damageToPlayer; // 몬스터가 플레이어에게 주는 데미지
-    public int damageToMonster; // 몬스터가 받는 데미지
+    public int damageToBomb; // 폭탄이 플레이어에게 주는 데미지
 
-    private bool isDamagingPlayer = false; // 플레이어와 접촉 중인지 여부
+    public GameObject bombFlame; // 폭탄 폭발 시 활성화할 BombFlame Prefab
+
+    private bool isDamagingPlayer = false; // 플레이어와의 충돌 여부
 
     void OnEnable()
     {
-        // 몬스터가 활성화될 때마다 체력을 최대 체력으로 초기화
         health = maxHealth;
     }
 
@@ -26,22 +26,19 @@ public class Monster : MonoBehaviour
             transform.Translate(Vector3.down * scrollSpeed * Time.deltaTime);
         }
 
-        // 체력이 0 이하가 되면 오브젝트 비활성화
+        // 체력이 0 이하가 되면 폭발
         if (health <= 0)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(Explode());
         }
 
-        // 플레이어와 충돌 중일 때 데미지 주기
         if (isDamagingPlayer)
         {
             // 일정 간격으로 데미지를 주기
             if (Time.time % 1f < Time.deltaTime) // 1초마다
             {
                 // 몬스터의 체력을 감소
-                health -= damageToMonster;
-                // GameManager를 통해 플레이어에게 데미지 전달
-                GameManager.instance.TakeDamage(damageToPlayer); 
+                health -= damageToBomb;
             }
         }
     }
@@ -60,5 +57,23 @@ public class Monster : MonoBehaviour
         {
             isDamagingPlayer = false;
         }
+    }
+
+    private IEnumerator Explode()
+    {
+        // BombFlame을 자식 객체에서 활성화
+        if (bombFlame != null)
+        {
+            bombFlame.SetActive(true);
+
+            // 1초 대기
+            yield return new WaitForSeconds(1f);
+
+            // BombFlame 비활성화
+            bombFlame.SetActive(false);
+        }
+        
+        // 폭탄 비활성화
+        gameObject.SetActive(false);
     }
 }
