@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager instance;
 
-    public bool isAttack = false;
-    public List<Transform> scrollObjects;
+    public bool isAttack;
 
     [Header("# Game Control")]
     public bool isLive;
@@ -16,8 +15,8 @@ public class GameManager : MonoBehaviour
     public float maxGameDistance;
     public float scrollSpeed = 8f;
     [Header("# Player Info")]
-    public float health;
-    public float maxHealth = 300f;
+    public int health;
+    public int maxHealth = 300;
     public int gem;
     [Header("# GameObject")]
     // public PoolManager pool;
@@ -40,11 +39,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (isLive)
-        {
+        if (!isLive)
+            return;
             UpdateGameDistance(); // 게임 거리 업데이트
             CheckMaxDistance();   // 최대 거리 체크
-        }
     }
 
     // 게임 거리 업데이트 (스크롤링 중일 때 거리 증가)
