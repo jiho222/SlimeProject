@@ -5,9 +5,10 @@ public class Monster : MonoBehaviour
 {
     public int health;
     public int maxHealth;
-    public int damageAmount;   // 한번에 입는 데미지
-    private bool isDamaging = false;   // 플레이어와 접촉 중인지 여부
-    private Coroutine damageCoroutine; // 데미지 코루틴을 관리할 변수
+    public int damageAmount; // 몬스터가 입히는 데미지
+
+    private bool isDamagingPlayer = false; // 플레이어와 접촉 중인지 여부
+    private GameObject player; // 충돌 중인 플레이어 오브젝트
 
     void OnEnable()
     {
@@ -30,43 +31,36 @@ public class Monster : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        // 플레이어와 충돌 중일 때 데미지 주기
+        if (isDamagingPlayer)
+        {
+            // 일정 간격으로 데미지를 주기
+            if (Time.time % 1f < Time.deltaTime) // 1초마다
+            {
+                // 몬스터의 체력을 감소
+                health -= damageAmount;
+                // 플레이어에게도 데미지
+                GameManager.instance.TakeDamage(damageAmount); // GameManager를 통해 플레이어에게 데미지 전달
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // 플레이어와 충돌 시 데미지를 입기 시작
-        if (collision.gameObject.CompareTag("Player") && !isDamaging)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // 기존에 실행 중인 코루틴이 있으면 중지
-            if (damageCoroutine != null)
-            {
-                StopCoroutine(damageCoroutine);
-            }
-            damageCoroutine = StartCoroutine(DamageOverTime());
+            isDamagingPlayer = true;
+            player = collision.gameObject; // 충돌한 플레이어 오브젝트 저장
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        // 플레이어와의 충돌이 끝나면 데미지 입는 코루틴 종료
-        if (collision.gameObject.CompareTag("Player") && isDamaging)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (damageCoroutine != null)
-            {
-                StopCoroutine(damageCoroutine);
-                damageCoroutine = null; // 코루틴 참조를 null로 초기화
-            }
-            isDamaging = false;
-        }
-    }
-
-    private IEnumerator DamageOverTime()
-    {
-        isDamaging = true;
-        while (true)
-        {
-            health -= damageAmount;
-            yield return new WaitForSeconds(1f);
+            isDamagingPlayer = false;
+            player = null; // 충돌이 끝나면 플레이어 오브젝트 제거
         }
     }
 }
