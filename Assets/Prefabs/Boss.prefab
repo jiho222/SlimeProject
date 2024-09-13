@@ -173,4 +173,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 200
-  damageAmount: 0
+  damageToPlayer: 10
+  damageToMonster: 50

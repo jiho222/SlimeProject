@@ -243,9 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168210869e36a46da9f9c484df422b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  maxHealth: 50
-  damageToBomb: 50
+  health: 0
+  maxHealth: 1
+  damageToBomb: 1
   bombFlame: {fileID: 3478422001882604849}
 --- !u!50 &7432048310062642252
 Rigidbody2D:

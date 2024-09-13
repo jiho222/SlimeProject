@@ -1288,7 +1288,7 @@ MonoBehaviour:
   isAttack: 0
   isLive: 1
   gameDistance: 0
-  maxGameDistance: 200
+  maxGameDistance: 500
   scrollSpeed: 8
   playerHealth: 0
   maxPlayerHealth: 300
@@ -1769,7 +1769,7 @@ MonoBehaviour:
   - 4
   spawnInterval: 1
   shopSpawnDistanceInterval: 0.1
-  specialObjectSpawnDistanceInterval: 0.7
+  specialObjectSpawnDistanceInterval: 0.5
 --- !u!1 &1394365604
 GameObject:
   m_ObjectHideFlags: 0

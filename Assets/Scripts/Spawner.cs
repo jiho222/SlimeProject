@@ -14,14 +14,14 @@ public class Spawner : MonoBehaviour
     float specialObjectSpawnThreshold;
     float endLineSpawnThreshold;
     float lastShopSpawnDistance = 10f;
-    float lastSpecialObjectSpawnDistance = -1f; // 초기 값 설정
+    float lastSpecialObjectSpawnDistance = 0f; // 초기 값 설정
 
     void Start()
     {
         // 게임 거리 기반으로 샵 생성 거리 간격 계산
         shopSpawnThreshold = GameManager.instance.maxGameDistance * shopSpawnDistanceInterval;
         specialObjectSpawnThreshold = GameManager.instance.maxGameDistance * specialObjectSpawnDistanceInterval;
-        endLineSpawnThreshold = GameManager.instance.maxGameDistance * 0.97f; // 게임 거리의 97%
+        endLineSpawnThreshold = GameManager.instance.maxGameDistance * 0.905f; // 게임 거리의 97%
     }
 
     void Update()
@@ -127,7 +127,7 @@ public class Spawner : MonoBehaviour
     void SpawnSpecialObject()
     {
         // 특정 오브젝트 생성 로직 구현
-        GameObject specialObject = GameManager.instance.pool.Get(2);  // 풀에서 2번째 프리팹 사용
+        GameObject specialObject = GameManager.instance.pool.Get(5);  // 풀에서 2번째 프리팹 사용
         specialObject.transform.position = transform.position;  // Spawner의 위치를 (0,0)으로 설정
     }
 
