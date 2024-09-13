@@ -34,13 +34,9 @@ public class Player : MonoBehaviour
         // X축 좌표를 중앙 기준으로 -4f ~ 4f 범위로 제한
         targetPosition.x = Mathf.Clamp(targetPosition.x, -4f, 4f);
 
-        // Y축 좌표를 0으로 고정
-        targetPosition.y = 0f;
-
         // 제한된 목표 위치로 캐릭터 이동
         rigid.MovePosition(targetPosition);
     }
-
 
     void Update()
     {
