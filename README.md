@@ -36,7 +36,7 @@
 
 ## 기타 정보
 #### 제작자: 류지호(jhryooz2@gmail.com)
-#### 사용된 에셋: 모두 직접 제작(Aseprite 사용)
+#### 에셋: 직접 제작(Aseprite 사용)
 #### 사운드: soundeffect-lab.info
 #### 배경음악: 유튜브 오디오 라이브러리 Forever Friends - Jeremy Korpas
 #### 개발기간: 2024.09.11~ 09.13
